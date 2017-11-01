@@ -18,6 +18,12 @@
 <title>學生課程頁面</title>
 <meta charset="utf-8">
 <style type="text/css">
+  .cls{
+    color:green;
+    font-size:30px;
+    border:2px green solid;
+    margin:20px 0;
+  }
   .title{
     color:blue;
     font-size:24px;
@@ -74,7 +80,11 @@
     echo $_FILES['exe']['type']."<br>";*/
   }
   //列出課程的所有測驗
-  $sql = "SELECT class.cls_id,class.cls_name,exam.exam_id,exam.exam_name FROM exam,class  WHERE exam.cls_id=class.cls_id and class.cls_id="."'" . $cls_id . "'";//列出課程的所有測驗
+  $sql = "SELECT cls_name,cls_des FROM class  WHERE cls_id="."'" . $cls_id . "'";//找出課程的名稱與說明
+  $r1 = mysqli_query($db, $sql);
+  $row=mysqli_fetch_row($r1);
+  echo "<div class='cls'><div>".$row[0]."</div><div>".$row[1]."</div></div>";
+  $sql = "SELECT class.cls_id,class.cls_name,exam.exam_id,exam.exam_name,class.cls_des FROM exam,class  WHERE exam.cls_id=class.cls_id and class.cls_id="."'" . $cls_id . "'";//列出課程的所有測驗
   $r1 = mysqli_query($db, $sql);
   if (mysqli_num_rows($r1) > 0){
     echo "<div  class='exam'><div class='title'>ch1到ch4線上單選題測驗</div><ul>";
