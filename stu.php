@@ -25,8 +25,8 @@
     if (mysqli_num_rows($r1) > 0){
       for($i=0;$i<mysqli_num_rows($r1);$i++){
       	$row=mysqli_fetch_row($r1);
-        echo "<a href='stu-class.php?cls_id=".$row[0]."'>".$row[1]."</a>";//列出課程
-      	echo "<br>";
+        echo "<a href='stu-class.php?cls_id=".$row[0]."'>".$row[1]."</a><br>";//列出課程
+      	echo "<a href='stu-pw.php'>更改密碼</a><br>";
       }
     }
   ?>
