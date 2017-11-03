@@ -50,8 +50,13 @@
 </head>
 <body>
   <?php
-  if (isset($_POST['exe_id'])) $exe_id=$_POST['exe_id'];//上傳作業
-  if (isset($_FILES['exe'])) {
+  if (isset($_POST['exe_id'])) $exe_id=$_POST['exe_id'];//上傳作業或刪除作業
+  if (isset($_POST['delexe']) && ($_POST['delexe'] == "刪除作業")) {
+    if (isset($_POST['exe_id'])) $exe_id=$_POST['exe_id'];
+    echo "刪除作業<br>";
+    $sql = "Delete FROM stu_exe WHERE exe_id='".$exe_id."'";
+    $r2 = mysqli_query($db, $sql);
+  }else if (isset($_FILES['exe'])) {//上傳作業
     $ext = pathinfo($_FILES['exe']['name'], PATHINFO_EXTENSION);
     $sql = "SELECT exe_name FROM exe WHERE exe_id='".$exe_id ."'";
     $r2 = mysqli_query($db, $sql);
@@ -79,6 +84,9 @@
     echo $_FILES['exe']['size']."<br>";
     echo $_FILES['exe']['type']."<br>";*/
   }
+
+
+
   //列出課程的所有測驗
   $sql = "SELECT cls_name,cls_des FROM class  WHERE cls_id="."'" . $cls_id . "'";//找出課程的名稱與說明
   $r1 = mysqli_query($db, $sql);
@@ -111,7 +119,8 @@
       }
       echo "<div> <input type='file' name='exe'></div>";//選擇檔案
       echo "<input type='hidden' name='exe_id' value='".$row2[0]."'>";//作業上傳後，使用目前網頁接收作業才知道作業id
-      echo "<input type='submit' value='上傳作業'></form><br>";//上傳作業
+      echo "<input type='submit' value='上傳作業'>    ";//上傳作業
+      echo "<input type='submit' name='delexe' value='刪除作業'></form><br>";//上傳作業
     }
     echo "</div>";
   }

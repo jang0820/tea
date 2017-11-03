@@ -30,7 +30,6 @@
   <?php
     if ($oldpass==$pass && $newpass1 == $newpass2){
       $sql="UPDATE user SET pass='".$newpass1."' WHERE acc='".$acc."'";
-      echo $sql;
       $r1 = mysqli_query($db, $sql);
       echo "更新成功<br>";
     }else{
