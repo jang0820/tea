@@ -23,6 +23,13 @@
 </head>
 <body>
 <?php
+  $sql = "SELECT class,seat,name FROM user  WHERE acc='$acc'";//找出使用者的班級姓名與座號
+  $r2 = mysqli_query($db, $sql);
+  $row=mysqli_fetch_row($r2);
+  $class=$row[0];
+  $seat=$row[1];
+  $name=$row[2];
+  echo "<div class='acc'>班級$class  座號$seat  姓名$name  帳號 $acc <a href='logout.php'>登出</a></div>";
   $sql = "SELECT * FROM exam_result WHERE acc='".$acc."'and exam_id='".$exam_id."'";//檢查是否已經做過
   $r2 = mysqli_query($db, $sql);
   $sql = "SELECT exam_name FROM exam WHERE exam_id='".$exam_id."'";//找出測驗標題

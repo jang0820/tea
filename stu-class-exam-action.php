@@ -25,6 +25,13 @@
 </head>
 <body> 
 <?php
+  $sql = "SELECT class,seat,name FROM user  WHERE acc='$acc'";//找出使用者的班級姓名與座號
+  $r2 = mysqli_query($db, $sql);
+  $row=mysqli_fetch_row($r2);
+  $class=$row[0];
+  $seat=$row[1];
+  $name=$row[2];
+  echo "<div class='acc'>班級$class  座號$seat  姓名$name  帳號 $acc <a href='logout.php'>登出</a></div>";
   $score=0;
   if (mysqli_num_rows($r1) > 0){
     for($i=1;$i<=mysqli_num_rows($r1);$i++){//列出答題是否正確

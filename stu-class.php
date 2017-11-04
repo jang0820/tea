@@ -18,6 +18,10 @@
 <title>學生課程頁面</title>
 <meta charset="utf-8">
 <style type="text/css">
+  .acc{
+    text-align:right;
+    font-size: 20px;
+  }
   .cls{
     color:green;
     font-size:30px;
@@ -52,10 +56,18 @@
   <?php
   if (isset($_POST['exe_id'])) $exe_id=$_POST['exe_id'];//上傳作業或刪除作業
   if (isset($_POST['delexe']) && ($_POST['delexe'] == "刪除作業")) {
-    if (isset($_POST['exe_id'])) $exe_id=$_POST['exe_id'];
-    echo "刪除作業<br>";
-    $sql = "Delete FROM stu_exe WHERE exe_id='".$exe_id."'";
-    $r2 = mysqli_query($db, $sql);
+    if (isset($_POST['exe_id'])) {
+      $exe_id=$_POST['exe_id'];
+      $sql = "SELECT f_name FROM stu_exe WHERE acc='".$acc."' and exe_id='".$exe_id ."'";//刪除作業檔案
+      $r1 = mysqli_query($db, $sql);
+      $row = mysqli_fetch_row($r1);
+      $f_name = $row[0];//檔案名稱
+      unlink("exe\\".$acc."\\".$f_name);//刪除作業檔案
+      $sql = "Delete FROM stu_exe WHERE acc='".$acc."' and exe_id='".$exe_id."'";//刪除作業的資料庫
+      $r2 = mysqli_query($db, $sql);
+      echo "刪除作業<br>";
+      echo "<meta http-equiv='refresh' content='3' />";
+    }
   }else if (isset($_FILES['exe'])) {//上傳作業
     $ext = pathinfo($_FILES['exe']['name'], PATHINFO_EXTENSION);
     $sql = "SELECT exe_name FROM exe WHERE exe_id='".$exe_id ."'";
@@ -75,6 +87,7 @@
         $sql = "INSERT INTO stu_exe VALUES('".$acc."','".$cls_id."','".$exe_id."','".$acc."_".$exe_name.".".$ext."','".$datetime."')";//沒有上傳過，新增檔案上傳紀錄到資料庫
         $r3 = mysqli_query($db, $sql);
       }
+      echo "<meta http-equiv='refresh' content='3' />";
     }else{
       echo "作業上傳失敗";
     }
@@ -84,9 +97,13 @@
     echo $_FILES['exe']['size']."<br>";
     echo $_FILES['exe']['type']."<br>";*/
   }
-
-
-
+  $sql = "SELECT class,seat,name FROM user  WHERE acc='$acc'";//找出使用者的班級姓名與座號
+  $r1 = mysqli_query($db, $sql);
+  $row=mysqli_fetch_row($r1);
+  $class=$row[0];
+  $seat=$row[1];
+  $name=$row[2];
+  echo "<div class='acc'>班級$class  座號$seat  姓名$name  帳號 $acc <a href='logout.php'>登出</a></div>";
   //列出課程的所有測驗
   $sql = "SELECT cls_name,cls_des FROM class  WHERE cls_id="."'" . $cls_id . "'";//找出課程的名稱與說明
   $r1 = mysqli_query($db, $sql);
