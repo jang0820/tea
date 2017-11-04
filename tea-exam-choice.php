@@ -1,4 +1,5 @@
-<?php  //上傳$_GET['exam_id']的測驗題目
+<?php  //上傳測驗卷題目
+//上傳$_GET['exam_id']的測驗題目
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");

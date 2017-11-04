@@ -35,8 +35,8 @@
     echo "<a href ='csv/exam.csv'>下載測驗單元名稱CSV範例檔</a>";//下載CSV範例檔
     echo "<div> <input type='file' name='exam'></div>";//選擇檔案
     echo "<input type='hidden' name='cls_id' value='".$cls_id."'>";//使用POST傳送cls_id給接收網頁
-    echo "<input type='submit' value='上傳測驗單元名稱'></form><br><br>";//上傳測驗單元名稱
-
+    echo "<input type='submit' value='上傳測驗單元名稱'></form>";//上傳測驗單元名稱
+    echo "<a href='tea-class-score.php?cls_id=$cls_id'>查詢目前學生成績</a><br><br><br>";
     $sql = "SELECT exe_id,exe_name FROM exe WHERE cls_id='".$cls_id."'";//查詢所有的作業單元名稱
     $r1=mysqli_query($db,$sql);
     if (mysqli_num_rows($r1) > 0){//新增至少一個作業名稱
