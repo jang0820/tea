@@ -66,7 +66,7 @@
       $sql = "Delete FROM stu_exe WHERE acc='".$acc."' and exe_id='".$exe_id."'";//刪除作業的資料庫
       $r2 = mysqli_query($db, $sql);
       echo "刪除作業<br>";
-      echo "<meta http-equiv='refresh' content='3' />";
+      echo "<meta http-equiv='refresh' content='2' />";
     }
   }else if (isset($_FILES['exe'])) {//上傳作業
     $ext = pathinfo($_FILES['exe']['name'], PATHINFO_EXTENSION);
@@ -87,7 +87,7 @@
         $sql = "INSERT INTO stu_exe VALUES('".$acc."','".$cls_id."','".$exe_id."','".$acc."_".$exe_name.".".$ext."','".$datetime."')";//沒有上傳過，新增檔案上傳紀錄到資料庫
         $r3 = mysqli_query($db, $sql);
       }
-      echo "<meta http-equiv='refresh' content='3' />";
+      echo "<meta http-equiv='refresh' content='2' />";
     }else{
       echo "作業上傳失敗";
     }
