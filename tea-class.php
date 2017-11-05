@@ -1,4 +1,4 @@
-<?php  //開啟$_GET['cls_id']的課程，並接收該課程的作業
+<?php  //開啟$_GET['cls_id']的課程，並接收該課程的測驗清單、作業清單與學生選課清單
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");
@@ -34,6 +34,11 @@
   }
   .exe{
     border:2px blue solid;
+    font-size:20px;
+    margin:40px 0px;
+  }
+  .stu{
+    border:2px green solid;
     font-size:20px;
     margin:40px 0px;
   }
@@ -89,7 +94,7 @@
 
     $sql = "SELECT acc,cls_id FROM stu_class WHERE cls_id='".$cls_id."'";//查詢所有的修課學生帳號
     $r1=mysqli_query($db,$sql);
-    echo "<div class='exe'>";
+    echo "<div class='stu'>";
     if (mysqli_num_rows($r1) > 0){//新增至少一個作業名稱
       echo "<table border=1><tr><td>帳號</td><td>課程編號</td></tr>";
       $num=mysqli_num_rows($r1);
@@ -99,7 +104,7 @@
       }
       echo "</table>";
     }
-    echo "<form class='form' action='tea-stu-class-action.php' enctype='multipart/form-data' method='POST'>";//新增作業
+    echo "<form class='form' action='tea-stu-class-action.php' enctype='multipart/form-data' method='POST'>";//新增學生選課清單
     echo "<a href ='csv/stu-class.csv'>下載學生選課清單CSV範例檔</a>";//下載CSV範例檔
     echo "<div> <input type='file' name='class'></div>";//選擇檔案
     echo "<input type='hidden' name='cls_id' value='".$cls_id."'>";//使用POST傳送cls_id給接收網頁
