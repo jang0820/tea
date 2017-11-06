@@ -1,4 +1,4 @@
-<?php  //開啟$_GET['cls_id']的課程，並接收該課程的作業
+<?php  //開啟$_GET['cls_id']的課程，並接收該課程的作業，開啟測驗的連結
   session_start();
   if (empty($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

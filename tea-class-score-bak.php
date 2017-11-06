@@ -1,4 +1,4 @@
-<?php  //搜尋$_GET['cls_id']的科目，並依照列為學號與測驗名稱列出該科所有成績
+<?php  //搜尋$_GET['cls_id']的科目，並依照列為「學號與測驗」列出該科所有測驗成績
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");

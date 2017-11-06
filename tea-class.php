@@ -1,4 +1,4 @@
-<?php  //開啟$_GET['cls_id']的課程，並接收該課程的測驗清單、作業清單與學生選課清單
+<?php  //開啟$_GET['cls_id']的課程，並接收該課程的測驗清單、作業清單與修改學生選課清單
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");

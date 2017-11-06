@@ -1,4 +1,4 @@
-<?php  //搜尋$_GET['cls_id']的科目，並依照列為學號，行為作業名稱列出該科所有成績
+<?php  //搜尋$_GET['cls_id']的科目，並依照列為學號，行為作業名稱，列出該科所有作業是否有做，有做顯示1，沒有做顯示0
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");

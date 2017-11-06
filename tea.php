@@ -1,4 +1,4 @@
-<?php
+<?php//教師模組最上層，新增、修改與刪除課程
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");
@@ -25,7 +25,7 @@
     if (mysqli_num_rows($r1) > 0){
       for($i=0;$i<mysqli_num_rows($r1);$i++){
       	$row=mysqli_fetch_row($r1);
-        echo "<a href='tea-class.php?cls_id=".$row[0]."'>".$row[1]."</a><br>";//列出課程
+        echo "<a href='tea-class.php?cls_id=".$row[0]."'>".$row[0].$row[1]."</a><br>";//列出課程
       }
     } 
     if (isset($_POST['select']) &&  $_POST['select'] == "選取課程") {//經由下拉選單選取課程

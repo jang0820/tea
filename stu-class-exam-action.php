@@ -1,4 +1,4 @@
-<?php  //接收開啟$_POST['exam_id']的測驗卷結果
+<?php  //接收stu-class-exam.php的測驗卷結果，並將分數加入資料庫
   session_start();
   if (empty($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

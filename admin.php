@@ -1,4 +1,4 @@
-<?php  //使用google雲端硬碟的試算表製作UTF8編碼的csv檔，中文才不會出現亂碼
+<?php  //新增帳號，使用google雲端硬碟的試算表製作UTF8編碼的csv檔，中文才不會出現亂碼
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 0) header("Location: login.php");

@@ -1,4 +1,4 @@
-<?php
+<?php//列出學生選課與修改密碼
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

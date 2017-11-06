@@ -1,4 +1,4 @@
-<?php //開啟測驗
+<?php //開啟測驗卷
   session_start();
   if (empty($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

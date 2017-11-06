@@ -1,4 +1,4 @@
-<?php //新增測驗卷題目form的接收程式
+<?php //新增測驗卷題目，接收來自tea-exam-choice.php的檔案
 //php預設執行時間限制為30秒，修改php.ini的max_execution_time=0，表示沒有限制
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");

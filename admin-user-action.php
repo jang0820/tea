@@ -1,4 +1,5 @@
-<?php //php預設執行時間限制為30秒，修改php.ini的max_execution_time=0，表示沒有限制
+<?php//接收來自admin.php的新增學生帳號檔案，新增帳號與上傳作業資料夾 
+//php預設執行時間限制為30秒，修改php.ini的max_execution_time=0，表示沒有限制
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 0) header("Location: login.php");

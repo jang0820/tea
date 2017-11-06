@@ -1,4 +1,4 @@
-<?php //上傳作業action接收程式
+<?php //新增選課學生，接收來自tea-class.php的選課學生csv檔
 //php預設執行時間限制為30秒，修改php.ini的max_execution_time=0，表示沒有限制
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
