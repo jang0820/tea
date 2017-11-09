@@ -1,4 +1,4 @@
-<?php//教師模組最上層，新增、修改與刪除課程
+<?php  //教師模組最上層，新增、修改與刪除課程
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 1) header("Location: login.php");
@@ -12,7 +12,6 @@
   } else {
     header("Location: login.php");
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
