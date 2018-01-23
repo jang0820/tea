@@ -1,4 +1,4 @@
-<?php//學生查詢測驗結果
+<?php //學生查詢測驗結果
   session_start();
   if (empty($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

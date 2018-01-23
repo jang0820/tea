@@ -1,4 +1,4 @@
-<?php//學生修改密碼，接收來自stu-pw.php的資料
+<?php //學生修改密碼，接收來自stu-pw.php的資料
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");

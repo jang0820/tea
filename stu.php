@@ -1,4 +1,4 @@
-<?php//列出學生選課與修改密碼
+<?php  //列出學生選課與修改密碼
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");
@@ -8,8 +8,7 @@
     mysqli_select_db($db, "tea");
     mysqli_query($db,"SET CHARACTER SET UTF8");
     $sql = "SELECT class.cls_id,class.cls_name,class.cls_des FROM stu_class , class WHERE stu_class.cls_id = class.cls_id and stu_class.acc="."'" . $acc . "'";//根據帳號查詢學生所修課程
-    $r1 = mysqli_query($db, $sql); 
-    mysqli_close($db); 
+    $r1 = mysqli_query($db, $sql);  
   } else {
     header("Location: login.php");
   }

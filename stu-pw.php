@@ -1,4 +1,4 @@
-<?php//學生修改密碼表單
+<?php  //學生修改密碼表單
   session_start();
   if (!isset($_SESSION['prio'])) header("Location: login.php");
   if ($_SESSION['prio'] != 2) header("Location: login.php");
